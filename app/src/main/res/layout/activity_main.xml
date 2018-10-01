@@ -7,62 +7,62 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/timerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="00:00:00"
+        android:text="@string/timerAtZero"
         android:textColor="#009688"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/timerView"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="41dp"
-        android:text="Start"
+        android:text="@string/start"
         android:onClick="startButton"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
+        android:layout_alignBaseline="@+id/startButton"
+        android:layout_alignBottom="@+id/startButton"
         android:layout_centerHorizontal="true"
-        android:text="Pause"
+        android:text="@string/pause"
         android:onClick="pauseButton"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/pauseButton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Reset"
-        android:onClick="resetButton"/>
+        android:onClick="resetButton"
+        android:text="@string/reset" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/lapButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/startButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="Save Lap"
-        android:onClick="lapbutton"/>
+        android:text="@string/save_lap"
+        android:onClick="lapButton"/>
 
     <ListView
         android:id="@+id/listview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/button4"
+        android:layout_below="@+id/lapButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp" />
 

@@ -29,19 +29,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = findViewById(R.id.textView);
-        start = findViewById(R.id.button);
-        pause = findViewById(R.id.button2);
+        textView = findViewById(R.id.timerView);
+        start = findViewById(R.id.startButton);
+        pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.button3);
-        lap = findViewById(R.id.button4) ;
+        lap = findViewById(R.id.lapButton) ;
         listView = findViewById(R.id.listview1);
         handler = new Handler() ;
-        ListElementsArrayList = new ArrayList<String>(Arrays.asList(ListElements));
 
-        adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1,
-                ListElementsArrayList
-        );
+        ListElementsArrayList = new ArrayList<>(Arrays.asList(ListElements));
+        adapter = new ArrayAdapter<>(MainActivity.this,
+                android.R.layout.simple_list_item_1, ListElementsArrayList);
         listView.setAdapter(adapter);
 
     }
@@ -93,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public void lapbutton(View view) {
+    public void lapButton(View view) {
         ListElementsArrayList.add(textView.getText().toString());
 
         adapter.notifyDataSetChanged();
