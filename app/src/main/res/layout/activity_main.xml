@@ -50,20 +50,32 @@
 
     <Button
         android:id="@+id/lapButton"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="@string/save_lap"
-        android:onClick="lapButton"/>
+        android:onClick="lapButton"
+        android:text="@string/save_lap" />
+
+    <Button
+        android:id="@+id/sendTimeIntent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lapButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="217dp"
+        android:text="@string/save_time"
+        android:onClick="startTimeDatabase"/>
 
     <ListView
-        android:id="@+id/listview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lapButton"
+        android:layout_below="@+id/sendTimeIntent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:id="@+id/listview1"/>
 
 </RelativeLayout>

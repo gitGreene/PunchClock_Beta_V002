@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.timerView);
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
-        reset = findViewById(R.id.button3);
+        reset = findViewById(R.id.resetButton);
         lap = findViewById(R.id.lapButton) ;
         listView = findViewById(R.id.listview1);
         handler = new Handler() ;
@@ -44,22 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public Runnable runnable = new Runnable() {
+    public void lapButton(View view) {
+        ListElementsArrayList.add(textView.getText().toString());
+        adapter.notifyDataSetChanged();
+    }
 
-        public void run() {
-
-            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-            UpdateTime = TimeBuff + MillisecondTime;
-            Seconds = (int) (UpdateTime / 1000);
-            Minutes = Seconds / 60;
-            Seconds = Seconds % 60;
-            MilliSeconds = (int) (UpdateTime % 1000);
-            textView.setText("" + Minutes + ":"
-                    + String.format("%02d", Seconds) + ":"
-                    + String.format("%03d", MilliSeconds));
-            handler.postDelayed(this, 0);
-        }
-    };
 
     public void startButton(View view) {
 
@@ -91,9 +80,24 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public void lapButton(View view) {
-        ListElementsArrayList.add(textView.getText().toString());
+    public Runnable runnable = new Runnable() {
 
-        adapter.notifyDataSetChanged();
+        public void run() {
+
+            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
+            UpdateTime = TimeBuff + MillisecondTime;
+            Seconds = (int) (UpdateTime / 1000);
+            Minutes = Seconds / 60;
+            Seconds = Seconds % 60;
+            MilliSeconds = (int) (UpdateTime % 1000);
+            textView.setText("" + Minutes + ":"
+                    + String.format("%02d", Seconds) + ":"
+                    + String.format("%03d", MilliSeconds));
+            handler.postDelayed(this, 0);
+        }
+    };
+
+
+    public void startTimeDatabase(View view) {
     }
 }
