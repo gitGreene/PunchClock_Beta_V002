@@ -5,22 +5,19 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.os.Handler;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 
     TextView textView ;
     Button start, pause, reset, lap ;
-    long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
+    Long millisecondsTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
+    String category, timeBankName;
 
     //Required for putExtras
     public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     //Changes startButton text to "Resume"
     public void pauseButton(View view) {
 
-        TimeBuff += MillisecondTime;
+        TimeBuff += millisecondsTime;
         handler.removeCallbacks(runnable);
         reset.setEnabled(true);
     }
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     //If no, back to MainActivity
     public void resetButton(View view) {
 
-        MillisecondTime = 0L ;
+        millisecondsTime = 0L ;
         StartTime = 0L ;
         TimeBuff = 0L ;
         UpdateTime = 0L ;
@@ -84,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
 
-            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-            UpdateTime = TimeBuff + MillisecondTime;
+            millisecondsTime = SystemClock.uptimeMillis() - StartTime;
+            UpdateTime = TimeBuff + millisecondsTime;
             Seconds = (int) (UpdateTime / 1000);
             Minutes = Seconds / 60;
             Seconds = Seconds % 60;
@@ -104,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
     public void startTimeDatabase(View view) {
         Intent startTimeDataBase = new Intent(this, timeDatabase.class);
         startTimeDataBase.putExtra("CATEGORY_NAME", category);
-        startTimeDataBase.putExtra("TIME_BANK_MAIN", timeBankName);
-        startTimeDataBase.putExtra("CURRENT TIME", MilliSeconds);
+        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
+        startTimeDataBase.putExtra("CURRENT_TIME", millisecondsTime);
         startActivity(startTimeDataBase);
     }
 }
