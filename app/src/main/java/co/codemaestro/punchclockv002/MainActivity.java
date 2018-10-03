@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.resetButton);
-        lap = findViewById(R.id.lapButton) ;
+//        lap = findViewById(R.id.lapButton) ;
         listView = findViewById(R.id.listview1);
         handler = new Handler() ;
 
@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void lapButton(View view) {
-        ListElementsArrayList.add(textView.getText().toString());
-        adapter.notifyDataSetChanged();
-    }
+//    public void lapButton(View view) {
+//        ListElementsArrayList.add(textView.getText().toString());
+//        adapter.notifyDataSetChanged();
+//    }
 
 
     public void startButton(View view) {
@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         MilliSeconds = 0 ;
 
         textView.setText("00:00:00");
-
         ListElementsArrayList.clear();
         adapter.notifyDataSetChanged();
     }
