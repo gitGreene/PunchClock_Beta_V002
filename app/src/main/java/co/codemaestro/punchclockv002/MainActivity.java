@@ -15,29 +15,39 @@ import java.util.List;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
+
     TextView textView ;
     Button start, pause, reset, lap ;
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
 
+    //Required for putExtras
     public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
+    public final static String CATEGORY_NAME = "co.codemaestro.punchclockv002.MESSAGE";
+    public final static String TIME_BANK_NAME = "co.codemaestro.punchclockv002.MESSAGE";
+    public final static String CURRENT_TIME = "co.codemaestro.punchclockv002.MESSAGE";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Assigning reference variables for interface
         textView = findViewById(R.id.timerView);
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.resetButton);
+        //Assigning Handler
         handler = new Handler() ;
 
 
     }
 
-
+    //Starts timeMain value counting
     public void startButton(View view) {
 
         StartTime = SystemClock.uptimeMillis();
@@ -45,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         reset.setEnabled(false);
     }
 
+    //Stops the timeMain as is
+    //Changes startButton text to "Resume"
     public void pauseButton(View view) {
 
         TimeBuff += MillisecondTime;
@@ -52,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         reset.setEnabled(true);
     }
 
+    //Asks the User if they are sure they want to reset
+    //If yes reset timeMain to 00:00:00
+    //If no, back to MainActivity
     public void resetButton(View view) {
 
         MillisecondTime = 0L ;
@@ -64,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(R.string.time_main_at_zero);
     }
 
+    //StopWatch Logic
     public Runnable runnable = new Runnable() {
 
         public void run() {
@@ -81,12 +97,15 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
+    //Save Time Button
+    //Starts timeDataBase Activity Class
+    //Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
+    //TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
         Intent startTimeDataBase = new Intent(this, timeDatabase.class);
         startTimeDataBase.putExtra("CATEGORY_NAME", category);
-        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
-        startTimeDataBase.putExtra("TIME_MAIN", MilliSeconds);
+        startTimeDataBase.putExtra("TIME_BANK_MAIN", timeBankName);
+        startTimeDataBase.putExtra("CURRENT TIME", MilliSeconds);
         startActivity(startTimeDataBase);
     }
 }
