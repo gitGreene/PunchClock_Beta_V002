@@ -1,5 +1,6 @@
 package co.codemaestro.punchclockv002;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
+
+    public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,5 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimeDatabase(View view) {
+        Intent startTimeDataBase = new Intent(this, timeDatabase.class);
+        startTimeDataBase.putExtra("TIME_MAIN", MilliSeconds);
+        startActivity(startTimeDataBase);
     }
 }
