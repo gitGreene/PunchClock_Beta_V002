@@ -19,10 +19,6 @@ public class MainActivity extends AppCompatActivity {
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
-    ListView listView ;
-    String[] ListElements = new String[] {  };
-    List<String> ListElementsArrayList ;
-    ArrayAdapter<String> adapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +29,11 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.resetButton);
-//        lap = findViewById(R.id.lapButton) ;
-        listView = findViewById(R.id.listview1);
         handler = new Handler() ;
 
-        ListElementsArrayList = new ArrayList<>(Arrays.asList(ListElements));
-        adapter = new ArrayAdapter<>(MainActivity.this,
-                android.R.layout.simple_list_item_1, ListElementsArrayList);
-        listView.setAdapter(adapter);
+
 
     }
-
-//    public void lapButton(View view) {
-//        ListElementsArrayList.add(textView.getText().toString());
-//        adapter.notifyDataSetChanged();
-//    }
 
 
     public void startButton(View view) {
@@ -73,10 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Seconds = 0 ;
         Minutes = 0 ;
         MilliSeconds = 0 ;
-
-        textView.setText("00:00:00");
-        ListElementsArrayList.clear();
-        adapter.notifyDataSetChanged();
+        textView.setText(R.string.time_main_at_zero);
     }
 
     public Runnable runnable = new Runnable() {

@@ -6,4 +6,5 @@
     <string name="reset">Reset</string>
     <string name="save_lap">Save Lap</string>
     <string name="save_time">Save Time</string>
+    <string name="time_main_at_zero">00:00:00</string>
 </resources>
