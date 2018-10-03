@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler() ;
 
 
-
     }
 
 
@@ -85,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void startTimeDatabase(View view) {
         Intent startTimeDataBase = new Intent(this, timeDatabase.class);
+        startTimeDataBase.putExtra("CATEGORY_NAME", category);
+        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
         startTimeDataBase.putExtra("TIME_MAIN", MilliSeconds);
         startActivity(startTimeDataBase);
     }
