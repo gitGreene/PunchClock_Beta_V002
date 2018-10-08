@@ -14,9 +14,9 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView textView ;
-    Button start, pause, reset, lap ;
-    Long millisecondsTime, StartTime, TimeBuff, UpdateTime = 0L ;
+    TextView textView;
+    Button start, pause, reset, lap;
+    Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
     String category, timeBankName;
