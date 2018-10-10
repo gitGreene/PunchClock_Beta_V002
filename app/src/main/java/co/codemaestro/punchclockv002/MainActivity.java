@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
-    String category, timeBankName;
+    String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
 
     //Required for putExtras
     public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
@@ -101,11 +101,14 @@ public class MainActivity extends AppCompatActivity {
     //Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
     //TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
-//        Intent startTimeDataBase = new Intent(this, timeDatabase.class);
-//        startTimeDataBase.putExtra("CATEGORY_NAME", category);
-//        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
-//        startTimeDataBase.putExtra("CURRENT_TIME", millisecondsTime);
-//        startActivity(startTimeDataBase);
+        Intent startTimeDataBase = new Intent(this, timeDatabase.class);
+       // startTimeDataBase.putExtra("CATEGORY_NAME", category);
+       // startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
+
+        savedTime = textView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
+
+        startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
+        startActivity(startTimeDataBase);
 
         DialogFragment newFragment = new CommitTimeFragment();
         newFragment.show(getSupportFragmentManager(), "CommitTimeFragment");
