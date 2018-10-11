@@ -1,9 +1,9 @@
 package co.codemaestro.punchclockv002;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +13,12 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView textView;
+    TextView timeView;
     Button start, pause, reset, lap;
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
+    String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
 
     //Required for putExtras
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Assigning reference variables for interface
-        textView = findViewById(R.id.timerView);
+        timeView = findViewById(R.id.timerView);
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.resetButton);
@@ -74,12 +75,13 @@ public class MainActivity extends AppCompatActivity {
         Seconds = 0 ;
         Minutes = 0 ;
         MilliSeconds = 0 ;
-        textView.setText(R.string.time_main_at_zero);
+        timeView.setText(R.string.time_main_at_zero);
     }
 
     //StopWatch Logic
     public Runnable runnable = new Runnable() {
 
+        @SuppressLint({"DefaultLocale", "SetTextI18n"})
         public void run() {
 
             millisecondsTime = SystemClock.uptimeMillis() - StartTime;
@@ -88,29 +90,55 @@ public class MainActivity extends AppCompatActivity {
             Minutes = Seconds / 60;
             Seconds = Seconds % 60;
             MilliSeconds = (int) (UpdateTime % 1000);
-            textView.setText("" + Minutes + ":"
+            timeView.setText("" + Minutes + ":"
                     + String.format("%02d", Seconds) + ":"
                     + String.format("%03d", MilliSeconds));
+            currentTime = timeView.getText().toString();
+
             handler.postDelayed(this, 0);
         }
     };
 
-    //Save Time Button
-    //Starts timeDataBase Activity Class
-    //Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
-    //TimeDataBase must be able to accept these extras for a RecyclerView
+//    Save Time Button
+//    Starts timeDataBase Activity Class
+//    Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
+//    TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
-        Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
-       // startTimeDataBase.putExtra("CATEGORY_NAME", category);
-       // startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
 
-        savedTime = textView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
+        /*Code for passing information to RecyclerView*/
+//        Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
+//        startTimeDataBase.putExtra("CATEGORY_NAME", category);
+//        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
+//        savedTime = timeView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
+//        startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
+//        startActivity(startTimeDataBase);
 
-        startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
-        startActivity(startTimeDataBase);
 
-        DialogFragment newFragment = new CommitTimeFragment();
-        newFragment.show(getSupportFragmentManager(), "CommitTimeFragment");
+//        DialogFragment newFragment = new CommitTimeFragment();
+//        newFragment.show(getSupportFragmentManager(), "CommitTimeFragment");
+
+//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+//        View mView = getLayoutInflater().inflate(R.layout.commit_time_dialog, null);
+
+//        TextView commitTimeDialogHeader = mView.findViewById(R.id.commit_time_header);
+//        TextView currentTime = mView.findViewById(R.id.current_time);
+//        currentTime.setText((CharSequence) currentTime);
+//        Button commitTimeConfirm = mView.findViewById(R.id.confirm_commit_button);
+//        Button declineTimeCommit = mView.findViewById(R.id.decline_commit_time_button);
+
+//        mBuilder.setView(mView);
+//        AlertDialog dialog = mBuilder.create();
+//        dialog.show();
+
+        openDialog(currentTime);
 
     }
+
+    public void openDialog(String currentTime) {
+        CommitTimeDialog commitTimeDialog = new CommitTimeDialog();
+        commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
+
+    }
+
+
 }

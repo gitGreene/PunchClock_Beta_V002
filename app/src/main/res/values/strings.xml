@@ -8,6 +8,13 @@
     <string name="save_time">Save Time</string>
     <string name="time_main_at_zero">00:00:00</string>
 
+
+    <!-- Commit Time Fragment Strings -->
+    <string name="commit_time_header">Would you like to commit this time?</string>
+    <string name="commit_time_confirm">Commit</string>
+    <string name="commit_time_decline_resume_timer">Resume timer</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
