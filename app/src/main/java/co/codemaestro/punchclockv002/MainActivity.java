@@ -102,11 +102,13 @@ public class MainActivity extends AppCompatActivity {
     //TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
         Intent startTimeDataBase = new Intent(this, timeDatabase.class);
-       // startTimeDataBase.putExtra("CATEGORY_NAME", category);
-       // startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
 
         savedTime = textView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
+        category = "My Category";
+        timeBankName = "My TimeBankName";
 
+        startTimeDataBase.putExtra("CATEGORY_NAME", category);
+        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
         startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
         startActivity(startTimeDataBase);
 

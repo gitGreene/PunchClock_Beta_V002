@@ -23,8 +23,8 @@ public class timeDatabase extends AppCompatActivity {
         setContentView(R.layout.activity_time_database);
 
         Intent turnMeOn = getIntent();
-        //timeBankName = turnMeOn.getStringExtra("TIME_BANK_NAME");
-        //category = turnMeOn.getStringExtra("CATEGORY_NAME");
+        timeBankName = turnMeOn.getStringExtra("TIME_BANK_NAME");
+        category = turnMeOn.getStringExtra("CATEGORY_NAME");
         savedTime = turnMeOn.getStringExtra("CURRENT_TIME");
 
         // Put data in the list "Dataset" as a String
