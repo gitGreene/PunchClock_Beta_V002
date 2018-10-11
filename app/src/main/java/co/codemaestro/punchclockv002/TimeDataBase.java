@@ -9,8 +9,7 @@ import android.view.View;
 
 import java.util.LinkedList;
 
-// Refactor the name to "TimeDataBase" with the right caps
-public class timeDatabase extends AppCompatActivity {
+public class TimeDataBase extends AppCompatActivity {
 
     String category, timeBankName, savedTime;
     private final LinkedList<String> myDataSet = new LinkedList<>();

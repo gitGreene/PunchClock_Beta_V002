@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -101,14 +100,12 @@ public class MainActivity extends AppCompatActivity {
     //Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
     //TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
-        Intent startTimeDataBase = new Intent(this, timeDatabase.class);
+        Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
+       // startTimeDataBase.putExtra("CATEGORY_NAME", category);
+       // startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
 
         savedTime = textView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
-        category = "My Category";
-        timeBankName = "My TimeBankName";
 
-        startTimeDataBase.putExtra("CATEGORY_NAME", category);
-        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
         startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
         startActivity(startTimeDataBase);
 
