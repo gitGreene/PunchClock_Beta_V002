@@ -61,5 +61,12 @@
         android:onClick="startTimeDatabase"
         android:text="@string/save_time" />
 
+    <LinearLayout
+        android:id="@+id/commit_time_dialog_viewgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout="@layout/commit_time_dialog"/>
+
 
 </LinearLayout>

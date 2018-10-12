@@ -3,6 +3,8 @@ package co.codemaestro.punchclockv002;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -130,15 +132,26 @@ public class MainActivity extends AppCompatActivity {
 //        AlertDialog dialog = mBuilder.create();
 //        dialog.show();
 
-        openDialog(currentTime);
+//        openDialog(currentTime);
 
-    }
+        CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance();
 
-    public void openDialog(String currentTime) {
-        CommitTimeDialog commitTimeDialog = new CommitTimeDialog();
+//        FragmentManager commitTimeManager = getSupportFragmentManager();
+//        FragmentTransaction commitTimeTransaction = commitTimeManager.beginTransaction();
+//        commitTimeTransaction.add(R.id.commit_time_dialog_viewgroup, commitTimeDialog);
+//        commitTimeTransaction.addToBackStack(null);
+//        commitTimeTransaction.commit();
+
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
 
+
     }
+
+//    public void openDialog(String currentTime) {
+//        CommitTimeDialog commitTimeDialog = new CommitTimeDialog();
+//        commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
+//
+//    }
 
 
 }

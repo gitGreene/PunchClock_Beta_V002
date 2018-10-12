@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TimeDataBase"
-            android:label="Time Database"
+            android:label="@string/time_database_label"
             android:parentActivityName=".MainActivity"
             tools:targetApi="jelly_bean">
             <meta-data

@@ -20,27 +20,15 @@ public class CommitTimeDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.commit_time_dialog, null);
 
-
-//        commitConfirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        commitDecline.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-
         builder.setView(view);
         return builder.create();
+    }
+
+    public static CommitTimeDialog newInstance() {
+        return new CommitTimeDialog();
     }
 
 }
