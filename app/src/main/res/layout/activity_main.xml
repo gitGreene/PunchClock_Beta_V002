@@ -67,7 +67,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        tools:layout="@layout/commit_time_dialog"/>
+        tools:layout="@layout/commit_time_dialog">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/tempTimeDatabaseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temp button"
+        android:onClick="tempTimeDataBaseButton"/>
 
 
 </LinearLayout>

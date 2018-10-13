@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-// THIS IS A TEST COMMENT THIS IS A NEW TEST COMMENT
+ 
 
 import java.util.LinkedList;
 
@@ -16,7 +16,9 @@ public class TimeDatabaseAdapter extends
         RecyclerView.Adapter<TimeDatabaseAdapter.TimeDatabaseHolder> {
 
     private final LinkedList<String> myTimeList;
+    private final LinkedList<String> myCategoryList;
     private LayoutInflater myInflater;
+
 
 
 
@@ -24,7 +26,8 @@ public class TimeDatabaseAdapter extends
     class TimeDatabaseHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-        public final TextView timeDataView;
+        public final TextView timeListTime;
+        public final TextView timeListCategory;
         final TimeDatabaseAdapter myAdapter;
 
         /**
@@ -38,7 +41,8 @@ public class TimeDatabaseAdapter extends
 
         public TimeDatabaseHolder(View itemView, TimeDatabaseAdapter adapter) {
             super(itemView);
-            timeDataView = itemView.findViewById(R.id.timeListItemData);
+            timeListTime = itemView.findViewById(R.id.timeListTime);
+            timeListCategory = itemView.findViewById(R.id.timeListCategory);
             this.myAdapter = adapter;
             itemView.setOnClickListener(this);
         }
@@ -60,6 +64,14 @@ public class TimeDatabaseAdapter extends
 
         }
     }
+
+
+
+
+
+
+
+
 
     /**
      * Called when RecyclerView needs a new ViewHolder of the given type to
@@ -92,10 +104,13 @@ public class TimeDatabaseAdapter extends
     public void onBindViewHolder(TimeDatabaseHolder holder, int position) {
 
         //Retrieve data for that position
-        String myData= myTimeList.get(position);
+        String myTime = myTimeList.get(position);
+
+        String myCategory = myCategoryList.get(position);
 
         // Add data to view holder
-        holder.timeDataView.setText(myData);
+        holder.timeListTime.setText(myTime);
+        holder.timeListCategory.setText(myCategory);
 
     }
 
@@ -104,9 +119,12 @@ public class TimeDatabaseAdapter extends
         return myTimeList.size();
     }
 
-    public TimeDatabaseAdapter(Context context, LinkedList<String> timeList) {
+
+
+    public TimeDatabaseAdapter(Context context, LinkedList<String> timeList, LinkedList<String> categoryList) {
         myInflater = LayoutInflater.from(context);
         this.myTimeList = timeList;
+        this.myCategoryList = categoryList;
     }
 
 
