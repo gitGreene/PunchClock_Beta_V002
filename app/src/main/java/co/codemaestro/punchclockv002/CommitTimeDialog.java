@@ -55,12 +55,7 @@ public class CommitTimeDialog extends AppCompatDialogFragment {
 //                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialog, int which) {
-//                Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
-//                startTimeDataBase.putExtra("CATEGORY_NAME", category);
-//                startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
-//                savedTime = timeView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
-//                startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
-//                startActivity(startTimeDataBase);
+
 //            }
 //        })
 //                .setNegativeButton("No", new DialogInterface.OnClickListener() {

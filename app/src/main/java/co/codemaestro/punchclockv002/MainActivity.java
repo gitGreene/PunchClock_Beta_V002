@@ -109,7 +109,12 @@ public class MainActivity extends AppCompatActivity {
     public void startTimeDatabase(View view) {
 
         /*Code for passing information to RecyclerView*/
-
+//        Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
+//        startTimeDataBase.putExtra("CATEGORY_NAME", category);
+//        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
+//        savedTime = timeView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
+//        startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
+//        startActivity(startTimeDataBase);
 
         currentTime = timeView.getText().toString();
         CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance(currentTime);
