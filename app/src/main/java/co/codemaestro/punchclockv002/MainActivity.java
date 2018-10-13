@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
-    String currentTime;
+    private String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
     private boolean isDialogDisplayed;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Assigning reference variables for interface
+        //Assigning reference variables for MainActivity UI
         timeView = findViewById(R.id.timerView);
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
             timeView.setText("" + Minutes + ":"
                     + String.format("%02d", Seconds) + ":"
                     + String.format("%03d", MilliSeconds));
-            currentTime = timeView.getText().toString();
 
             handler.postDelayed(this, 0);
         }
@@ -109,25 +108,12 @@ public class MainActivity extends AppCompatActivity {
     public void startTimeDatabase(View view) {
 
         /*Code for passing information to RecyclerView*/
-//        Intent startTimeDataBase = new Intent(this, TimeDataBase.class);
-//        startTimeDataBase.putExtra("CATEGORY_NAME", category);
-//        startTimeDataBase.putExtra("TIME_BANK_NAME", timeBankName);
-//        savedTime = timeView.getText().toString();  // Fran added this line to get the timer value - 10/9/2018
-//        startTimeDataBase.putExtra("CURRENT_TIME", savedTime); //Fran edited this line to take var "savedTime"
-//        startActivity(startTimeDataBase);
 
 
-        CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance();
-
-//        FragmentManager commitTimeManager = getSupportFragmentManager();
-//        FragmentTransaction commitTimeTransaction = commitTimeManager.beginTransaction();
-//        commitTimeTransaction.add(R.id.commit_time_dialog_viewgroup, commitTimeDialog);
-//        commitTimeTransaction.addToBackStack(null);
-//        commitTimeTransaction.commit();
-
+        currentTime = timeView.getText().toString();
+        CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance(currentTime);
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
         isDialogDisplayed = true;
-
     }
 
 }
