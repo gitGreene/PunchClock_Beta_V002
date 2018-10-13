@@ -12,7 +12,8 @@ import java.util.LinkedList;
 public class TimeDataBase extends AppCompatActivity {
 
     String category, timeBankName, savedTime;
-    private final LinkedList<String> myDataSet = new LinkedList<>();
+    private final LinkedList<String> myCategoryList = new LinkedList<>();
+    private final LinkedList<String> myTimeList = new LinkedList<>();
     private RecyclerView myRecyclerView;
     private TimeDatabaseAdapter myAdapter;
 
@@ -26,20 +27,12 @@ public class TimeDataBase extends AppCompatActivity {
         category = turnMeOn.getStringExtra("CATEGORY_NAME");
         savedTime = turnMeOn.getStringExtra("CURRENT_TIME");
 
-        // Put data in the list "Dataset" as a String
-        myDataSet.addLast(savedTime);
+        // Put data in lists
+        myTimeList.addLast(savedTime);
+        myCategoryList.addLast(category);
 
-        myRecyclerView = findViewById(R.id.timeRecyclerView);
-
-        //Create an adapter then supply the data
-        myAdapter = new TimeDatabaseAdapter(this, myDataSet);
-
-        // Connects the adapter to the RecView
-        myRecyclerView.setAdapter(myAdapter);
-
-        // Gives the RecView a default Layout Manager
-        myRecyclerView.setLayoutManager(new LinearLayoutManager((this)));
-
+        // Run method to initialize RecyclerView
+        initRecyclerView();
 
 
 
@@ -48,13 +41,20 @@ public class TimeDataBase extends AppCompatActivity {
 
     public void tempAddToList(View view) {
 
-        // Put data in the list "Dataset" as a String
-        myDataSet.addLast(savedTime);
+        myTimeList.addLast(savedTime);
+        myCategoryList.addLast(category);
+
+        myAdapter.notifyDataSetChanged();
+
+    }
+
+    private void initRecyclerView() {
 
         myRecyclerView = findViewById(R.id.timeRecyclerView);
 
         //Create an adapter then supply the data
-        myAdapter = new TimeDatabaseAdapter(this, myDataSet);
+        myAdapter = new TimeDatabaseAdapter(this, myTimeList, myCategoryList);
+
 
         // Connects the adapter to the RecView
         myRecyclerView.setAdapter(myAdapter);

@@ -1,6 +1,7 @@
 package co.codemaestro.punchclockv002;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentManager;
@@ -128,6 +129,17 @@ public class MainActivity extends AppCompatActivity {
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
         isDialogDisplayed = true;
 
+    }
+
+    public void tempTimeDataBaseButton(View view) {
+
+        savedTime = timeView.getText().toString();
+        category = "Punch Clock";
+
+        Intent startTimeActivity = new Intent(this, TimeDataBase.class);
+        startTimeActivity.putExtra("CATEGORY_NAME", category);
+        startTimeActivity.putExtra("CURRENT_TIME", savedTime);
+        startActivity(startTimeActivity);
     }
 
 }
