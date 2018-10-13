@@ -17,6 +17,7 @@ public class CommitTimeDialog extends AppCompatDialogFragment {
     private Button commitDecline;
 
 
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

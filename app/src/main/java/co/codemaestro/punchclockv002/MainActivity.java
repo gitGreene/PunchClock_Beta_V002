@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     int Seconds, Minutes, MilliSeconds ;
     String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
+    private boolean isDialogDisplayed;
 
     //Required for putExtras
     public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 //        commitTimeTransaction.commit();
 
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
-
+        isDialogDisplayed = true;
 
     }
 
