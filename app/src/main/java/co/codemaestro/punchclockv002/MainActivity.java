@@ -116,24 +116,6 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(startTimeDataBase);
 
 
-//        DialogFragment newFragment = new CommitTimeFragment();
-//        newFragment.show(getSupportFragmentManager(), "CommitTimeFragment");
-
-//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-//        View mView = getLayoutInflater().inflate(R.layout.commit_time_dialog, null);
-
-//        TextView commitTimeDialogHeader = mView.findViewById(R.id.commit_time_header);
-//        TextView currentTime = mView.findViewById(R.id.current_time);
-//        currentTime.setText((CharSequence) currentTime);
-//        Button commitTimeConfirm = mView.findViewById(R.id.confirm_commit_button);
-//        Button declineTimeCommit = mView.findViewById(R.id.decline_commit_time_button);
-
-//        mBuilder.setView(mView);
-//        AlertDialog dialog = mBuilder.create();
-//        dialog.show();
-
-//        openDialog(currentTime);
-
         CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance();
 
 //        FragmentManager commitTimeManager = getSupportFragmentManager();
@@ -146,12 +128,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-//    public void openDialog(String currentTime) {
-//        CommitTimeDialog commitTimeDialog = new CommitTimeDialog();
-//        commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
-//
-//    }
-
 
 }
