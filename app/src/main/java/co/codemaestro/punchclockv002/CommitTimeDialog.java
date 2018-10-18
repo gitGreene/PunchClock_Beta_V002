@@ -55,7 +55,6 @@ public class CommitTimeDialog extends AppCompatDialogFragment {
 //                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialog, int which) {
-
 //            }
 //        })
 //                .setNegativeButton("No", new DialogInterface.OnClickListener() {
