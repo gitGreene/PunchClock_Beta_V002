@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
     private boolean isDialogDisplayed;
 
+
     //Required for putExtras
     public final static String TIME_MAIN = "co.codemaestro.punchclockv002.MESSAGE";
     public final static String CATEGORY_NAME = "co.codemaestro.punchclockv002.MESSAGE";
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         StartTime = SystemClock.uptimeMillis();
         handler.postDelayed(runnable, 0);
         reset.setEnabled(false);
+
     }
 
     //Stops the timeMain as is
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         TimeBuff += millisecondsTime;
         handler.removeCallbacks(runnable);
         reset.setEnabled(true);
+
     }
 
     //Asks the User if they are sure they want to reset

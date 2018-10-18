@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="#EEEEF0"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,87 +15,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="@string/timerAtZero"
-        android:textColor="#009688"
+        android:textColor="@color/colorPrimary"
         android:textSize="80sp"
         android:textStyle="bold" />
-
-    <!--&lt;!&ndash; TOP ROW OF BUTTONS &ndash;&gt;-->
-    <!---->
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginTop="25dp"-->
-    <!--android:layout_marginEnd="10dp"-->
-    <!--android:layout_marginRight="10dp">-->
-    <!---->
-    <!--&lt;!&ndash; START/PAUSE BUTTON &ndash;&gt;-->
-
-    <!--<Button-->
-    <!--android:id="@+id/startButton"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="130dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:onClick="startButton"-->
-    <!--android:text="@string/start" />-->
-    <!---->
-    <!--&lt;!&ndash;RESET BUTTON &ndash;&gt;-->
-    <!---->
-    <!--<Button-->
-    <!--android:id="@+id/resetButton"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="130dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:onClick="resetButton"-->
-    <!--android:text="@string/reset" />-->
-
-    <!--</LinearLayout>-->
-    <!---->
-    <!--&lt;!&ndash; SECOND ROW OF BUTTONS &ndash;&gt;-->
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginTop="0dp"-->
-    <!--android:layout_marginEnd="10dp"-->
-    <!--android:layout_marginRight="10dp">-->
-    <!---->
-    <!--&lt;!&ndash; COMMIT TIME BUTTON &ndash;&gt;-->
-
-    <!--<Button-->
-    <!--android:id="@+id/sendTimeIntent"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="130dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:onClick="startTimeDatabase"-->
-    <!--android:text="@string/save_time" />-->
-    <!---->
-    <!--&lt;!&ndash; PAUSE BUTTON &ndash;&gt;-->
-
-    <!--<Button-->
-    <!--android:id="@+id/pauseButton"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="130dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:onClick="pauseButton"-->
-    <!--android:text="@string/pause" />-->
-
-    <!--</LinearLayout>-->
-
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/commit_time_dialog_viewgroup"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:orientation="vertical"-->
-        <!--tools:layout="@layout/commit_time_dialog">-->
-
-
-    <!--</LinearLayout>-->
 
     <Button
         android:id="@+id/tempTimeDatabaseButton"
@@ -109,7 +32,12 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            tools:showIn="@layout/activity_main">
 
             <Button
                 android:id="@+id/startButton"
@@ -119,7 +47,8 @@
                 android:background="@drawable/button"
                 android:onClick="startButton"
                 android:text="@string/start"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <Button
                 android:id="@+id/resetButton"
@@ -129,7 +58,8 @@
                 android:background="@drawable/button"
                 android:onClick="resetButton"
                 android:text="@string/reset"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         </TableRow>
 
         <TableRow
@@ -144,7 +74,8 @@
                 android:background="@drawable/button"
                 android:onClick="startTimeDatabase"
                 android:text="@string/commit"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <Button
                 android:id="@+id/pauseButton"
@@ -154,7 +85,8 @@
                 android:background="@drawable/button"
                 android:onClick="pauseButton"
                 android:text="@string/pause"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         </TableRow>
 
     </TableLayout>
