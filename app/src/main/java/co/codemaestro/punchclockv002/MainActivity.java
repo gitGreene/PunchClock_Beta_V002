@@ -15,15 +15,13 @@ public class MainActivity extends AppCompatActivity
 
 
     TextView timeView;
-    Button start, pause, reset, lap;
+    Button start, pause, reset;
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
     Handler handler;
     int Seconds, Minutes, MilliSeconds ;
     private String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
     private boolean isDialogDisplayed;
-    String DialogChoiceYes = "Yes";
-    String DialogChoiceNo = "No";
 
 
     //Required for putExtras
