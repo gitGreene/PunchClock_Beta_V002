@@ -4,16 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.Handler;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+                        implements CommitTimeDialog.CommitTimeFragmentListener {
 
 
     TextView timeView;
@@ -24,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
     private boolean isDialogDisplayed;
+    String DialogChoiceYes = "Yes";
+    String DialogChoiceNo = "No";
 
 
     //Required for putExtras
@@ -110,15 +110,32 @@ public class MainActivity extends AppCompatActivity {
 //    Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
 //    TimeDataBase must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
-
         currentTime = timeView.getText().toString();
         CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance(currentTime);
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
         isDialogDisplayed = true;
+        // MAY NEED TO PAUSE RUNNABLE HERE
     }
 
-    public void tempTimeDataBaseButton(View view) {
+    @Override
+    public void onChoice(boolean choice) {
+        if(choice) {
+            savedTime = timeView.getText().toString();
+            category = "Punch Clock";
+            /*Code for passing information to RecyclerView*/
+            Intent startTimeActivity = new Intent(this, TimeDataBase.class);
+            startTimeActivity.putExtra("CATEGORY_NAME", category);
+            startTimeActivity.putExtra("CURRENT_TIME", savedTime);
+            startActivity(startTimeActivity);
+        } else {
+            // FIX THIS
+            // CURRENTLY NOT RESUMING WHERE IT LEFT OFF
+            runnable.run();
+        }
+    }
 
+    // NOT NEEDED ANYMORE
+    public void tempTimeDataBaseButton(View view) {
         savedTime = timeView.getText().toString();
         category = "Punch Clock";
 
@@ -128,5 +145,4 @@ public class MainActivity extends AppCompatActivity {
         startTimeActivity.putExtra("CURRENT_TIME", savedTime);
         startActivity(startTimeActivity);
     }
-
 }

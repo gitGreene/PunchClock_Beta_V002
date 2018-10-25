@@ -25,34 +25,4 @@
         android:textSize="40sp"
         android:layout_marginTop="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
-
-        <Button
-            android:id="@+id/confirm_commit_time_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/commit_time_confirm"
-            android:onClick="commitTime"/>
-
-        <Button
-            android:id="@+id/decline_commit_time_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/commit_time_decline_resume_timer"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-
 </LinearLayout>

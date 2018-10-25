@@ -17,4 +17,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="time_database_label">Time Database</string>
 
+    <string name="time_to_commit">00:00:00</string>
+
+    <string name="exception_message">COMMIT TIME FRAGMENT FAILED</string>
+
 </resources>
