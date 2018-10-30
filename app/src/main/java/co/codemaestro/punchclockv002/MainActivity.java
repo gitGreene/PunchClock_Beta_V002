@@ -2,8 +2,10 @@ package co.codemaestro.punchclockv002;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +40,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(savedInstanceState != null) {
+            savedInstanceState.get(currentTime);
+            timeView.setText(currentTime);
+        }
+
         //Assigning reference variables for MainActivity UI
         timeView = findViewById(R.id.timerView);
         start = findViewById(R.id.startButton);
@@ -47,6 +54,22 @@ public class MainActivity extends AppCompatActivity
         handler = new Handler() ;
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("runningTime", currentTime);
+        editor.apply();
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(currentTime, currentTime);
     }
 
     //Starts timeMain value counting
