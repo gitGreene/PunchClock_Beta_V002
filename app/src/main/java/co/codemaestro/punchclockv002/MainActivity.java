@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
     public void startButton(View view) {
 
         StartTime = SystemClock.uptimeMillis();
-        handler.postDelayed(runnable, 0);
+        handler.post(runnable);
         reset.setEnabled(false);
 
     }
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
                     + String.format("%02d", Seconds) + ":"
                     + String.format("%03d", MilliSeconds));
 
-            handler.postDelayed(this, 0);
+            handler.post(this);
         }
     };
 
@@ -112,23 +112,32 @@ public class MainActivity extends AppCompatActivity
         CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance(currentTime);
         commitTimeDialog.show(getSupportFragmentManager(), "commit time dialog");
         isDialogDisplayed = true;
-        // MAY NEED TO PAUSE RUNNABLE HERE
     }
 
+    // METHOD IMPLEMENTED AS PART OF THE
+    // CommitTimeDialog.CommitTimeFragmentListener INTERFACE
     @Override
     public void onChoice(boolean choice) {
         if(choice) {
+            // PAUSE THE TIMER
+            handler.removeCallbacks(runnable);
+
+            // CODE FOR PASSING DATA TO TIME DATABASE
             savedTime = timeView.getText().toString();
             category = "Punch Clock";
-            /*Code for passing information to RecyclerView*/
             Intent startTimeActivity = new Intent(this, TimeDataBase.class);
             startTimeActivity.putExtra("CATEGORY_NAME", category);
             startTimeActivity.putExtra("CURRENT_TIME", savedTime);
             startActivity(startTimeActivity);
+
         } else {
-            // FIX THIS
-            // CURRENTLY NOT RESUMING WHERE IT LEFT OFF
-            runnable.run();
+            // RESUME TIMER IF IT WAS COUNTING
+            // STAY AT ZERO IF IT WAS NOT
+            if(UpdateTime != 0) {
+                StartTime = SystemClock.uptimeMillis();
+                handler.post(runnable);
+                reset.setEnabled(false);
+            }
         }
     }
 
