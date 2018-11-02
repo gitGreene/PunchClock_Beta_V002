@@ -1,4 +1,24 @@
 package co.codemaestro.punchclockv002;
 
-public class TimeDataDao {
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
+
+import java.util.List;
+
+@Dao
+public interface TimeDataDao {
+
+    @Query("SELECT * FROM timeData")
+    List<TimeData> getAllData();
+
+    @Insert
+    void insertAll(TimeData... timeDatas);
+
+
+    // Currently unused
+    @Query("DELETE FROM timeData")
+    void nukeTable();
+
 }

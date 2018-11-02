@@ -165,16 +165,4 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-
-    // NOT NEEDED ANYMORE
-    public void tempTimeDataBaseButton(View view) {
-        savedTime = timeView.getText().toString();
-        category = "Punch Clock";
-
-        /*Code for passing information to RecyclerView*/
-        Intent startTimeActivity = new Intent(this, TimeTable.class);
-        startTimeActivity.putExtra("CATEGORY_NAME", category);
-        startTimeActivity.putExtra("CURRENT_TIME", savedTime);
-        startActivity(startTimeActivity);
-    }
 }
