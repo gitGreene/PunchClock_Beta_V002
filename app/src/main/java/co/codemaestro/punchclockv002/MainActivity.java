@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity
     private String currentTime;
     String category, timeBankName, savedTime; // Fran added "savedTime" to simplify the code on timeDataBase.java  - 10/9/2018
     private boolean isDialogDisplayed;
+    private EditText addCategoryEditText;
+    private Button addCategoryButton;
 
 
     //Required for putExtras
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity
         start = findViewById(R.id.startButton);
         pause = findViewById(R.id.pauseButton);
         reset = findViewById(R.id.resetButton);
+        addCategoryEditText = findViewById(R.id.addCategoryEditText);
+        addCategoryButton = findViewById(R.id.addCategoryButton);
+
         //Assigning Handler
         handler = new Handler() ;
 
@@ -167,6 +173,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void addCategory(View view) {
-
+//        String newCategory;
+//        newCategory = addCategoryEditText.getText();
+//        insertCategory(newCategory);
     }
 }
