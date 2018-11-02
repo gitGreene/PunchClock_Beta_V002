@@ -19,13 +19,6 @@
         android:textSize="80sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/tempTimeDatabaseButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="tempTimeDataBaseButton"
-        android:text="Temp button" />
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

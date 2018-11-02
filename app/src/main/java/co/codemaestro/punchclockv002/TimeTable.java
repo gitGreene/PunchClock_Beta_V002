@@ -1,69 +1,53 @@
 package co.codemaestro.punchclockv002;
-
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TimeTable extends AppCompatActivity {
 
-    String category, timeBankName, savedTime;
-    private final LinkedList<String> myCategoryList = new LinkedList<>();
-    private final LinkedList<String> myTimeList = new LinkedList<>();
-    private RecyclerView myRecyclerView;
-    private TimeTableAdapter myAdapter;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_database);
+        setContentView(R.layout.activity_time_table);
+
+        recyclerView = findViewById(R.id.timeRecyclerView);
 
         Intent turnMeOn = getIntent();
-        timeBankName = turnMeOn.getStringExtra("TIME_BANK_NAME");
-        category = turnMeOn.getStringExtra("CATEGORY_NAME");
-        savedTime = turnMeOn.getStringExtra("CURRENT_TIME");
-
-        // Put data in lists
-        myTimeList.addLast(savedTime);
-        myCategoryList.addLast(category);
-
-        // Run method to initialize RecyclerView
-        initRecyclerView();
+        String category = turnMeOn.getStringExtra("CATEGORY_NAME");
+        String savedTime = turnMeOn.getStringExtra("CURRENT_TIME");
 
 
+        TimeDatabase db = Room.databaseBuilder(getApplicationContext(), TimeDatabase.class, "placeholder")
+                .allowMainThreadQueries()
+                .build();
+
+        TimeData timeData = new TimeData(savedTime, category);
+        db.timeDataDao().insertAll(timeData);
+
+
+        List<TimeData> timeDatabase = db.timeDataDao().getAllData();
+
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TimeTableAdapter(timeDatabase);
+        recyclerView.setAdapter(adapter);
 
 
     }
 
-    public void tempAddToList(View view) {
 
-        myTimeList.addLast(savedTime);
-        myCategoryList.addLast(category);
-
-        myAdapter.notifyDataSetChanged();
-
+    public void NUKE(View view) {
     }
-
-    private void initRecyclerView() {
-
-        myRecyclerView = findViewById(R.id.timeRecyclerView);
-
-        //Create an adapter then supply the data
-        myAdapter = new TimeTableAdapter(this, myTimeList, myCategoryList);
-
-
-        // Connects the adapter to the RecView
-        myRecyclerView.setAdapter(myAdapter);
-
-        // Gives the RecView a default Layout Manager
-        myRecyclerView.setLayoutManager(new LinearLayoutManager((this)));
-
-    }
-
-
-
 }
