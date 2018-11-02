@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 
-public class TimeDatabaseAdapter extends
-        RecyclerView.Adapter<TimeDatabaseAdapter.TimeDatabaseHolder> {
+public class TimeTableAdapter extends
+        RecyclerView.Adapter<TimeTableAdapter.TimeDatabaseHolder> {
 
     private final LinkedList<String> myTimeList;
     private final LinkedList<String> myCategoryList;
@@ -28,7 +28,7 @@ public class TimeDatabaseAdapter extends
 
         public final TextView timeListTime;
         public final TextView timeListCategory;
-        final TimeDatabaseAdapter myAdapter;
+        final TimeTableAdapter myAdapter;
 
         /**
          * Creates a new custom view holder to hold the view to display in
@@ -39,7 +39,7 @@ public class TimeDatabaseAdapter extends
          *                for the RecyclerView.
          */
 
-        public TimeDatabaseHolder(View itemView, TimeDatabaseAdapter adapter) {
+        public TimeDatabaseHolder(View itemView, TimeTableAdapter adapter) {
             super(itemView);
             timeListTime = itemView.findViewById(R.id.timeListTime);
             timeListCategory = itemView.findViewById(R.id.timeListCategory);
@@ -121,7 +121,7 @@ public class TimeDatabaseAdapter extends
 
 
 
-    public TimeDatabaseAdapter(Context context, LinkedList<String> timeList, LinkedList<String> categoryList) {
+    public TimeTableAdapter(Context context, LinkedList<String> timeList, LinkedList<String> categoryList) {
         myInflater = LayoutInflater.from(context);
         this.myTimeList = timeList;
         this.myCategoryList = categoryList;

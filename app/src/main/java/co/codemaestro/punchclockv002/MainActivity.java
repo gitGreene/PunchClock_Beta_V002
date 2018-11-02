@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity
 //    Save Time Button
 //    Starts timeDataBase Activity Class
 //    Passes the CATEGORY_NAME, TIME_BANK_NAME, TIME_MAIN extras to the next activity
-//    TimeDataBase must be able to accept these extras for a RecyclerView
+//    TimeTable must be able to accept these extras for a RecyclerView
     public void startTimeDatabase(View view) {
         currentTime = timeView.getText().toString();
         CommitTimeDialog commitTimeDialog = CommitTimeDialog.newInstance(currentTime);
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity
             // CODE FOR PASSING DATA TO TIME DATABASE
             savedTime = timeView.getText().toString();
             category = "Punch Clock";
-            Intent startTimeActivity = new Intent(this, TimeDataBase.class);
+            Intent startTimeActivity = new Intent(this, TimeTable.class);
             startTimeActivity.putExtra("CATEGORY_NAME", category);
             startTimeActivity.putExtra("CURRENT_TIME", savedTime);
             startActivity(startTimeActivity);
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity
         category = "Punch Clock";
 
         /*Code for passing information to RecyclerView*/
-        Intent startTimeActivity = new Intent(this, TimeDataBase.class);
+        Intent startTimeActivity = new Intent(this, TimeTable.class);
         startTimeActivity.putExtra("CATEGORY_NAME", category);
         startTimeActivity.putExtra("CURRENT_TIME", savedTime);
         startActivity(startTimeActivity);
