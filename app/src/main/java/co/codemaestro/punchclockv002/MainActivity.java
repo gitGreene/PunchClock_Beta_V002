@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity
 
     //TESTs are for bitches and hoes//
     // this is a new asdhfioasd //
+    // This is a test from Mitch //
     TextView timeView;
     Button start, pause, reset;
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
