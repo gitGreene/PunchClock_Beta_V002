@@ -9,13 +9,13 @@ import android.view.View;
 
 import java.util.LinkedList;
 
-public class TimeDataBase extends AppCompatActivity {
+public class TimeTable extends AppCompatActivity {
 
     String category, timeBankName, savedTime;
     private final LinkedList<String> myCategoryList = new LinkedList<>();
     private final LinkedList<String> myTimeList = new LinkedList<>();
     private RecyclerView myRecyclerView;
-    private TimeDatabaseAdapter myAdapter;
+    private TimeTableAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class TimeDataBase extends AppCompatActivity {
         myRecyclerView = findViewById(R.id.timeRecyclerView);
 
         //Create an adapter then supply the data
-        myAdapter = new TimeDatabaseAdapter(this, myTimeList, myCategoryList);
+        myAdapter = new TimeTableAdapter(this, myTimeList, myCategoryList);
 
 
         // Connects the adapter to the RecView
