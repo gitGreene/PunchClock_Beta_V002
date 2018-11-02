@@ -15,7 +15,7 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity
                         implements CommitTimeDialog.CommitTimeFragmentListener {
 
-    //TEST//
+    //TESTs are for bitches//
     TextView timeView;
     Button start, pause, reset;
     Long millisecondsTime, StartTime, TimeBuff = 0L, UpdateTime = 0L;
