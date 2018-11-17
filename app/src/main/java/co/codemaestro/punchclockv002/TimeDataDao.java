@@ -16,8 +16,8 @@ public interface TimeDataDao {
     @Insert
     void insertAll(TimeData... timeDatas);
 
-    @Insert
-    void insertCategory(String category);
+//    @Insert
+//    void insertCategory(String category);
 
 
     // Currently unused
